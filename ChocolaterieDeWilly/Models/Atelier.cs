@@ -85,7 +85,9 @@ namespace ChocolaterieDeWilly.Models
         /// <param name="dateLimite">La date avant laquelle le lot doit être fabriqué.</param>
         public void PlanifierLot(string nom, int quantite, Masse poidsUnitaire, DateTime dateLimite)
         {
-
+            int numero = _prochainNumeroLot;
+            LotProduction nouveauLot = new LotProduction(numero, nom, quantite, poidsUnitaire, dateLimite);
+            _prochainNumeroLot = +1;
         }
 
         /// <summary>

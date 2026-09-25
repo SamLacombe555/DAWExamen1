@@ -86,7 +86,8 @@ namespace ChocolaterieDeWilly.Models
         public void PlanifierLot(string nom, int quantite, Masse poidsUnitaire, DateTime dateLimite)
         {
             int numero = _prochainNumeroLot;
-            LotProduction nouveauLot = new LotProduction(numero, nom, quantite, poidsUnitaire, dateLimite);
+            LotProduction lot = new LotProduction(numero, nom, quantite, poidsUnitaire, dateLimite);
+            Lots.Add(lot);
             _prochainNumeroLot = +1;
         }
 
@@ -305,6 +306,58 @@ namespace ChocolaterieDeWilly.Models
         /// <param name="lot">Le lot qui vient d'être terminé.</param>
         private void CacherTickets(LotProduction lot)
         {
+
+            int i = _compteurUnites;
+            int compteurUnites = _compteurUnites;
+            while (i < (lot.QuantiteInvendue + compteurUnites))
+            {
+                _compteurUnites = +1;
+                if (_compteurUnites == IntervalleTicket)
+                {
+                    if (TicketsCaches == MaxTicketsOr)
+                    {
+                        int numeroTicket = TicketsCaches;
+                        lot.AjouterTicket(numeroTicket);
+                        TicketsCaches = +1;
+                    }
+                }
+                else if (_compteurUnites == (IntervalleTicket) * 2)
+                {
+                    if (TicketsCaches == MaxTicketsOr)
+                    {
+                        int numeroTicket = TicketsCaches;
+                        lot.AjouterTicket(numeroTicket);
+                        TicketsCaches = +1;
+                    }
+                }
+                else if (_compteurUnites == (IntervalleTicket) * 3)
+                {
+                    if (TicketsCaches == MaxTicketsOr)
+                    {
+                        int numeroTicket = TicketsCaches;
+                        lot.AjouterTicket(numeroTicket);
+                        TicketsCaches = +1;
+                    }
+                }
+                else if (_compteurUnites == (IntervalleTicket) * 4)
+                {
+                    if (TicketsCaches == MaxTicketsOr)
+                    {
+                        int numeroTicket = TicketsCaches;
+                        lot.AjouterTicket(numeroTicket);
+                        TicketsCaches = +1;
+                    }
+                }
+                else if (_compteurUnites == (IntervalleTicket) * 5)
+                {
+                    if (TicketsCaches == MaxTicketsOr)
+                    {
+                        int numeroTicket = TicketsCaches;
+                        lot.AjouterTicket(numeroTicket);
+                        TicketsCaches = +1;
+                    }
+                }
+            }
         }
     }
 }

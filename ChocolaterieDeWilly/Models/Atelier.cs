@@ -307,9 +307,10 @@ namespace ChocolaterieDeWilly.Models
         private void CacherTickets(LotProduction lot)
         {
 
-            int i = _compteurUnites;
             int compteurUnites = _compteurUnites;
-            while (i < (lot.QuantiteInvendue + compteurUnites))
+            int i = _compteurUnites;
+
+            while (i < (lot.QuantiteInvendue + compteurUnites); ++i)
             {
                 _compteurUnites = +1;
                 if (_compteurUnites == IntervalleTicket)
@@ -357,6 +358,7 @@ namespace ChocolaterieDeWilly.Models
                         TicketsCaches = +1;
                     }
                 }
+                ++i;
             }
         }
     }

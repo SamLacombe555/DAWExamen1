@@ -88,6 +88,7 @@ namespace ChocolaterieDeWilly.Models
             int numero = _prochainNumeroLot;
             LotProduction lot = new LotProduction(numero, nom, quantite, poidsUnitaire, dateLimite);
             Lots.Add(lot);
+            // TOOD: += 1, là tu assigne 1 à _prochainNumeroLot
             _prochainNumeroLot = +1;
         }
 
@@ -306,7 +307,12 @@ namespace ChocolaterieDeWilly.Models
         /// <param name="lot">Le lot qui vient d'être terminé.</param>
         private void CacherTickets(LotProduction lot)
         {
-
+            // TODO: Un while ne prend pas de ; ++i (c’est la syntaxe d’un for).
+            //      = +1 assigne la valeur 1 au lieu d’ajouter 1 ; C'est += 1.
+            //      La boucle doit parcourir Creation.Quantite, et non QuantiteInvendue.
+            //      La condition doit être TicketsCaches < MaxTicketsOr, et non ==.
+            //      Les cinq blocs répétés se remplacent par un seul test avec % IntervalleTicket,
+            //      et TicketsCaches doit être incrémenté avant de numéroter le ticket.
             int compteurUnites = _compteurUnites;
             int i = _compteurUnites;
 

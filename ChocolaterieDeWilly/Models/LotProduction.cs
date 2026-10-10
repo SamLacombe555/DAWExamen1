@@ -41,9 +41,12 @@ namespace ChocolaterieDeWilly.Models
         public int QuantiteInvendue
         {
             get { return _quantiteInvendue; }
-            set  { if (value >= 0)
+            // TODO: || value <= Creation.Quantite
+            set
+            { if (value >= 0) 
                 { _quantiteInvendue = value; }
                 else
+                    // TODO: Corriger message selon test unitaire
                     throw new ArgumentException("La valeur entrer n'est pas entre 0 et la quantité produite");
             }
         }
